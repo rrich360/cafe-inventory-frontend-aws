@@ -1,8 +1,10 @@
-# Cafe Inventory Management System — Frontend
+# Cafe Inventory Management System — Frontend (AWS)
 
-Angular dashboard for a full-stack cafe inventory management system: inventory/category/product management, stock order tracking with PDF download, user management, and role-based navigation driven by a JWT issued from the backend API.
+Angular dashboard for a full-stack cafe inventory management system, deployed to AWS via S3 + CloudFront. This is the AWS-deployed variant of [cafe-inventory-frontend](https://github.com/rrich360/cafe-inventory-frontend) — same application code and history, prepared and deployed for the cloud.
 
-This is the local-only baseline version of the project. The AWS-deployed variant lives in `cafe-inventory-frontend-aws` (link added once that repo is live).
+## Status
+
+The S3 + CloudFront deployment and any AWS-specific build/config changes land here as Article 4 of the "From Code to Cloud" series progresses. As of Article 3, this repo already talks to the live AWS backend ([cafe-inventory-backend-aws](https://github.com/rrich360/cafe-inventory-backend-aws)) when pointed at its Elastic IP — proven end-to-end in Article 3's closing verification.
 
 ## Tech stack
 
@@ -16,7 +18,7 @@ This is the local-only baseline version of the project. The AWS-deployed variant
    ```
    npm install
    ```
-2. Make sure the backend (see [cafe-inventory-backend](https://github.com/rrich360/cafe-inventory-backend)) is running on `http://localhost:8081` — this is set in `src/environments/environment.ts` (`apiUrl`), update it if your backend runs elsewhere.
+2. Point `src/environments/environment.ts` (`apiUrl`) at your backend — either the local baseline (`http://localhost:8081`) or the live AWS deployment.
 3. Run the dev server:
    ```
    ng serve
@@ -25,6 +27,6 @@ This is the local-only baseline version of the project. The AWS-deployed variant
 
 ## Related
 
-- Backend: [cafe-inventory-backend](https://github.com/rrich360/cafe-inventory-backend) (Spring Boot)
-- AWS-deployed variant: `cafe-inventory-frontend-aws` (coming soon)
-- Part of the "From Code to Cloud" article series documenting this project's journey from localhost to AWS
+- Local-only baseline: [cafe-inventory-frontend](https://github.com/rrich360/cafe-inventory-frontend) — forked from here, shares this repo's git history
+- Backend (AWS): [cafe-inventory-backend-aws](https://github.com/rrich360/cafe-inventory-backend-aws)
+- Part of the "From Code to Cloud" article series documenting this project's journey from localhost to AWS — see Article 3 (EC2 + RDS deployment) and Article 4 (S3, SES, CloudFront)
