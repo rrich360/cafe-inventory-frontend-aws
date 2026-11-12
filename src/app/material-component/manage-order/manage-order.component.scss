@@ -11,6 +11,25 @@ table {
   width: 100%;
 }
 
+// Keep each field's icon on the same line as its input box, on phones and laptops alike
+.input-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.input-group .input-group-prepend {
+  display: flex;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.input-group .form-control {
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+}
+
 mat-label {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   font-size: 12px;

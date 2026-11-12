@@ -433,3 +433,23 @@ div {
         color: #CBA258;
     }
 }
+// Same top bar behavior as the home page: one line, and on phones only the menu and the app name
+.navbar-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .navbar-title {
+    font-size: 1rem;
+  }
+  .navbar-brand {
+    margin-left: 0.75rem;
+  }
+  .storefront-btn,
+  .person-btn {
+    display: none;
+  }
+}

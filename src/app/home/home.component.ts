@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
         this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/purchase-order.svg')
       ),
       this.matIconRegistry.addSvgIcon(
-        'delivery-truck',
-        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/delivery-truck.svg')
+        'ai-insights',
+        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/ai-insights.svg')
       ),
       this.matIconRegistry.addSvgIcon(
         'coffee-menu',

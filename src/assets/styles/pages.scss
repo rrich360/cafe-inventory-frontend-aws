@@ -38,6 +38,23 @@ html .page-wrapper{
 		}
 }
 
+/* Phones and small tablets: one natural page scroll instead of a scrolling box inside a scrolling page.
+   The header stays pinned at the top, and the footer simply follows the content. Laptops are unchanged. */
+@media (max-width: 767px) {
+		html .page-wrapper {
+				height: auto;
+		}
+		.main-container,
+		.main-container .mat-drawer-container,
+		.main-container .mat-drawer-content {
+				overflow: visible !important;
+		}
+		.main-container .topbar {
+				position: sticky;
+				top: 0;
+		}
+}
+
 .align-items-center{
 		align-items: center;
 }

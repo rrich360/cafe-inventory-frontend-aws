@@ -17,7 +17,7 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
   styleUrls: ['./view-stock-orders.component.scss']
 })
 export class ViewStockOrdersComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['name', 'email', 'contactNumber', 'paymentMethod', 'total', 'view'];
+  displayedColumns: string[] = ['name', 'vendor', 'email', 'contactNumber', 'paymentMethod', 'total', 'view'];
   dataSource: any;
   responseMessage: any;
   role: any;
@@ -48,6 +48,10 @@ export class ViewStockOrdersComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        // Search the visible columns, including the vendor name nested inside each order
+        this.dataSource.filterPredicate = (row: any, filter: string) =>
+          [row.companyName, row.vendor?.vendorName, row.email, row.contactNumber, row.paymentMethod, row.totalValue]
+            .some((value) => String(value ?? '').toLowerCase().includes(filter));
       },
       (error: any) => {
         this.ngxService.stop();
@@ -66,6 +70,7 @@ export class ViewStockOrdersComponent implements OnInit, AfterViewInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { data: values };
     dialogConfig.width = '100%';
+    dialogConfig.maxWidth = '95vw'; // use the phone's full width instead of the default 80%
     this.dialog.open(ViewBillProductsComponent, dialogConfig);
   }
 

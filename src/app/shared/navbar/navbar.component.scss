@@ -21,7 +21,32 @@
   padding-top: .5250rem;
   font-size: 1.25rem;
   line-height: inherit;
+}
+
+// Keeps the app name on one line; on narrow phones it shrinks instead of being cut off at the screen edge
+.navbar-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .navbar-text{
+    font-size: 1rem;
+  }
+  .navbar-title {
+    font-size: 1rem;
+  }
+  .navbar-brand {
+    margin-left: 0.75rem;
+  }
+  .storefront-btn {
+    display: none;
+  }
+  .sign-in-brand {
+    display: none;
+  }
 }
 
 .orangeButton {

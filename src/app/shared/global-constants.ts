@@ -8,7 +8,11 @@
     public static categoryExistError: string = "Category already exists.";
 
     // Regex
-    public static nameRegex: string = "[a-zA-Z0-9 .,&'@#/-]*";
+    // Includes accented Latin letters (À-ſ: é, è, ñ, ü, ö, etc.) and common
+    // "smart" typography that copy/paste from Word, email, or other sources introduces
+    // (curly quotes ‘’, en/em dash –—) - real names and vendor names
+    // pasted by real demo visitors otherwise fail silently against an ASCII-only pattern.
+    public static nameRegex: string = "[a-zA-Z0-9À-ſ .,&'@#/‘’–—-]*";
     public static usernameRegex: string = "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}";
     public static mobileNumberRegex: string = "^[(]?[0-9]{3}[)]?[- ]?[0-9]{3}[- ]?[0-9]{4}$";
     public static emailRegex: string = "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}";

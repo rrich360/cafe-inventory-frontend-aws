@@ -40,3 +40,23 @@
         background-color: #04AA6D;
         color: white;
       }
+// Phones: keep the whole pop-up inside the screen. The product table shrinks to fit instead of
+// pushing the pop-up sideways, and long product names wrap.
+:host ::ng-deep .mat-dialog-content {
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+  :host ::ng-deep .mat-dialog-content th.mat-header-cell,
+  :host ::ng-deep .mat-dialog-content td.mat-cell {
+    padding: 6px 3px !important;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  // Only the product name wraps (at spaces), so prices and headings stay on one line
+  :host ::ng-deep .mat-dialog-content th.mat-header-cell.mat-column-name,
+  :host ::ng-deep .mat-dialog-content td.mat-cell.mat-column-name {
+    white-space: normal;
+    min-width: 80px;
+  }
+}

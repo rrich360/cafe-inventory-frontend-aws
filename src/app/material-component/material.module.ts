@@ -22,6 +22,7 @@ import { CategoryComponent } from './dialog/category/category.component';
 import { ProductComponent } from './dialog/product/product.component';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { AiOrderInsightsComponent } from './ai-order-insights/ai-order-insights.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ChangePasswordComponent } from './dialog/change-password/change-passwor
     CategoryComponent,
     ProductComponent,
     ConfirmationComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AiOrderInsightsComponent
   ],
   entryComponents: [
     ViewBillProductsComponent,

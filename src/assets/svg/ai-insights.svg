@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="256" height="256" viewBox="0 0 90 90">
+	<path d="M 14 18 H 60 A 6 6 0 0 1 66 24 V 54 A 6 6 0 0 1 60 60 H 30 L 18 72 V 60 H 14 A 6 6 0 0 1 8 54 V 24 A 6 6 0 0 1 14 18 Z" style="fill: rgb(232,170,110); stroke: rgb(0,0,0); stroke-width: 3; stroke-linejoin: round;"/>
+	<rect x="17" y="40" width="9" height="13" rx="1" style="fill: rgb(74,137,220); stroke: rgb(0,0,0); stroke-width: 2.5;"/>
+	<rect x="31" y="32" width="9" height="21" rx="1" style="fill: rgb(74,137,220); stroke: rgb(0,0,0); stroke-width: 2.5;"/>
+	<rect x="45" y="25" width="9" height="28" rx="1" style="fill: rgb(74,137,220); stroke: rgb(0,0,0); stroke-width: 2.5;"/>
+	<path d="M 74 3 Q 74 16 87 16 Q 74 16 74 29 Q 74 16 61 16 Q 74 16 74 3 Z" style="fill: rgb(255,206,84); stroke: rgb(0,0,0); stroke-width: 2.5; stroke-linejoin: round;"/>
+	<path d="M 79 36 Q 79 44 87 44 Q 79 44 79 52 Q 79 44 71 44 Q 79 44 79 36 Z" style="fill: rgb(255,206,84); stroke: rgb(0,0,0); stroke-width: 2.5; stroke-linejoin: round;"/>
+</svg>

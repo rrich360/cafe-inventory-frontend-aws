@@ -13,6 +13,9 @@
           <i class="material-icons" style="vertical-align:middle;">receipt_long</i>
           Submit &amp; Get S.O.
         </button>
+        <div *ngIf="validateOrder() && (storeDetailsForm.touched || vendorDetailsForm.touched || tableData.length > 0)" style="color:#b00020; font-size:13px; margin-top:4px;">
+          Submit is disabled until store details, vendor details, and at least one product are all filled in correctly.
+        </div>
       </div>
     </div>
 
@@ -219,30 +222,30 @@
             <p class="card-category">Products added to this stock order</p>
           </div>
           <div class="card-body table-responsive">
-            <table mat-table [dataSource]="tableData" class="table table-hover" style="width:100%;">
+            <table mat-table [dataSource]="tableData" class="table table-hover stack-on-mobile" style="width:100%;">
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Name</th>
-                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                <td mat-cell *matCellDef="let element" data-label="Name">{{ element.name }}</td>
               </ng-container>
               <ng-container matColumnDef="category">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Category</th>
-                <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+                <td mat-cell *matCellDef="let element" data-label="Category">{{ element.category }}</td>
               </ng-container>
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Price</th>
-                <td mat-cell *matCellDef="let element">{{ element.price | currency:'USD' }}</td>
+                <td mat-cell *matCellDef="let element" data-label="Price">{{ element.price | currency:'USD' }}</td>
               </ng-container>
               <ng-container matColumnDef="quantity">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Quantity</th>
-                <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+                <td mat-cell *matCellDef="let element" data-label="Quantity">{{ element.quantity }}</td>
               </ng-container>
               <ng-container matColumnDef="total">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Total</th>
-                <td mat-cell *matCellDef="let element">{{ element.total | currency:'USD' }}</td>
+                <td mat-cell *matCellDef="let element" data-label="Total">{{ element.total | currency:'USD' }}</td>
               </ng-container>
               <ng-container matColumnDef="delete">
                 <th mat-header-cell *matHeaderCellDef class="text-primary">Delete</th>
-                <td mat-cell *matCellDef="let element; let i = index">
+                <td mat-cell *matCellDef="let element; let i = index" data-label="Delete">
                   <button mat-icon-button style="color:#CBA258;" (click)="handleDeleteProduct(i)">
                     <i class="material-icons">close</i>
                   </button>

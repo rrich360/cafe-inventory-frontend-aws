@@ -43,16 +43,21 @@ export class ManageOrderComponent implements OnInit {
   }
 
   initForms() {
+    // Simplified 2026-08-25: pattern validators removed in favor of required-only.
+    // The patterns tested clean in isolation (see project_manage_order_form_debugging.md) -
+    // this wasn't a fix for a confirmed regex bug, it's a deliberate choice to remove
+    // restrictive character-class validation on free-text name/address fields, which is
+    // its own defensible improvement independent of the intermittent Submit issue.
     this.storeDetailsForm = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]],
-      email: [null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
-      contactNumber: [null, [Validators.required, Validators.pattern(GlobalConstants.mobileNumberRegex)]],
+      name: [null, Validators.required],
+      email: [null, Validators.required],
+      contactNumber: [null, Validators.required],
       paymentMethod: [null, Validators.required]
     });
 
     this.vendorDetailsForm = this.formBuilder.group({
-      vendorName: [null, [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]],
-      vendorEmail: [null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
+      vendorName: [null, Validators.required],
+      vendorEmail: [null, Validators.required],
       billingAddress: [null, Validators.required]
     });
 

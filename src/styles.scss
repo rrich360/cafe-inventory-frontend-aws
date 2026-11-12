@@ -48,7 +48,14 @@ body {
 }
 
 
-html, body { height: 100%; }
+/* One scrollbar per page. Hiding sideways overflow on <html> only (not on a fixed-height <body>) keeps the
+   browser window as the single scroller; a 100%-height body with overflow-x: hidden becomes a second scroll box. */
+html { overflow-x: hidden; }
+
+/* Phones: pop-ups use less outer padding so their content (like the order's product table) has room */
+@media (max-width: 600px) {
+  .mat-dialog-container { padding: 14px !important; }
+}
 body { margin: 0; font-family: Montserrat, 'Roboto', 'Helvetica Neue', sans-serif; }
 
 /* ============================================================
@@ -230,14 +237,44 @@ body { margin: 0; font-family: Montserrat, 'Roboto', 'Helvetica Neue', sans-seri
   background: #00704A !important;
 }
 
-  //responsibe table
-  @media(max-width: 800px) {
-    .responsive_table {
-        overflow-x: auto !important;
+  // Responsive tables: on phones, each row stacks into a labeled block so the
+  // table fits inside its card instead of overflowing past it.
+  @media (max-width: 767px) {
+    .stack-on-mobile,
+    .stack-on-mobile tbody {
+      display: block;
+      width: 100%;
     }
-  
-    .mat-table {
-        min-width:800px;
+
+    .stack-on-mobile thead,
+    .stack-on-mobile .mat-header-row {
+      display: none;
+    }
+
+    .stack-on-mobile .mat-row {
+      display: block;
+      height: auto;
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .stack-on-mobile .mat-cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: none !important;
+      padding: 4px 8px !important;
+      text-align: right !important;
+      overflow-wrap: anywhere;
+    }
+
+    .stack-on-mobile .mat-cell::before {
+      content: attr(data-label);
+      font-weight: 600;
+      color: #1E3932;
+      text-align: left;
+      flex-shrink: 0;
     }
   }
   

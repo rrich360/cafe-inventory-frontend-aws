@@ -5,6 +5,7 @@ import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ViewStockOrdersComponent } from './view-stock-orders/view-stock-orders.component';
 import { UsersComponent } from './users/users.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { AiOrderInsightsComponent } from './ai-order-insights/ai-order-insights.component';
 
 export const MaterialRoutes: Routes = [
   { path: 'category', component: ManageCategoryComponent },
@@ -12,5 +13,6 @@ export const MaterialRoutes: Routes = [
   { path: 'order', component: ManageOrderComponent },
   { path: 'viewstockorders', component: ViewStockOrdersComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'change-password', component: ChangePasswordComponent }
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'ai-order-insights', component: AiOrderInsightsComponent }
 ];

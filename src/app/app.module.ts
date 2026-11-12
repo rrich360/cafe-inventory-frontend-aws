@@ -30,8 +30,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
   textColor: "#ffffff",
   textPosition: "center-center",
-  bgsColor: "#00704A",
-  fgsColor: "#00704A",
+  // Holiday red (close to the Starbucks red cup). Switch back to Starbucks green (#00704A) after the holidays.
+  bgsColor: "#C8102E",
+  fgsColor: "#C8102E",
   fgsType: SPINNER.ballSpinClockwise,
   fgsSize: 100,
   hasProgressBar: false

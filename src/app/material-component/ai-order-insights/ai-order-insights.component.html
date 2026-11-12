@@ -1,0 +1,98 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">AI Order Insights</h4>
+            <p class="card-category">A plain-language summary of your stock orders</p>
+          </div>
+
+          <div class="card-body">
+            <p class="intro">
+              The app calculates the numbers from your order history. AI then explains them in plain language and suggests one next step.
+            </p>
+
+            <button class="btn btn-round generate-btn" [disabled]="loading" (click)="generateInsights()">
+              <i class="material-icons">auto_awesome</i>
+              {{ requested ? 'Refresh insights' : 'Generate insights' }}
+            </button>
+
+            <!-- Loading -->
+            <div *ngIf="loading" class="loading">
+              <mat-spinner diameter="36"></mat-spinner>
+              <span>Analyzing your orders...</span>
+            </div>
+
+            <ng-container *ngIf="!loading && requested">
+
+              <!-- AI summary -->
+              <div *ngIf="summary || recommendedAction" class="summary-box">
+                <p *ngIf="summary" class="summary-text">{{ summary }}</p>
+                <div *ngIf="recommendedAction" class="action-box">
+                  <i class="material-icons">lightbulb</i>
+                  <div>
+                    <strong>Recommended action</strong>
+                    <p>{{ recommendedAction }}</p>
+                  </div>
+                </div>
+                <p *ngIf="isAiSummary" class="ai-label">
+                  AI-generated summary (Amazon Bedrock). The numbers come from the app, not the AI.
+                </p>
+              </div>
+
+              <!-- Not enough data, limit reached, AI unavailable or an error -->
+              <div *ngIf="message" class="notice">
+                <i class="material-icons">info</i>
+                <span>{{ message }}</span>
+              </div>
+
+              <!-- The facts behind the summary -->
+              <mat-accordion *ngIf="facts && (facts.reorderDue || facts.spendMovement || facts.anomaly)">
+                <mat-expansion-panel [expanded]="!summary">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>How this was calculated</mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <p class="facts-note">Calculated by the app from {{ facts.ordersAnalyzed }} stock order(s).</p>
+
+                  <div *ngIf="facts.reorderDue as due" class="fact">
+                    <h6>Reorder due</h6>
+                    <p>
+                      <strong>{{ due.item }}</strong> is usually reordered every {{ due.averageDaysBetweenOrders }} days.
+                      It was last ordered {{ due.daysSinceLastOrder }} days ago, so it is
+                      <strong>{{ due.daysOverdue }} days overdue</strong>.
+                    </p>
+                  </div>
+
+                  <div *ngIf="facts.spendMovement as spend" class="fact">
+                    <h6>Spend, last {{ spend.periodDays }} days</h6>
+                    <p>
+                      {{ spend.currentPeriodSpend | currency:'USD' }} vs {{ spend.priorPeriodSpend | currency:'USD' }}
+                      the {{ spend.periodDays }} days before<ng-container *ngIf="spend.percentChange !== null">
+                      (<strong>{{ spend.percentChange > 0 ? '+' : '' }}{{ spend.percentChange }}%</strong>)</ng-container>.
+                      <ng-container *ngIf="spend.topVendor">
+                        Biggest change: <strong>{{ spend.topVendor }}</strong>
+                        ({{ spend.topVendorChange > 0 ? '+' : '' }}{{ spend.topVendorChange | currency:'USD' }}).
+                      </ng-container>
+                    </p>
+                  </div>
+
+                  <div *ngIf="facts.anomaly as anomaly" class="fact">
+                    <h6>Standout order</h6>
+                    <p>
+                      {{ anomaly.orderDate | date:'mediumDate' }}: a {{ anomaly.orderTotal | currency:'USD' }} order from
+                      <strong>{{ anomaly.vendor }}</strong>, about <strong>{{ anomaly.timesTypical }}x</strong>
+                      its usual {{ anomaly.typicalOrderTotal | currency:'USD' }}.
+                    </p>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
