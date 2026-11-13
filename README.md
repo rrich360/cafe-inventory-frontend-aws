@@ -45,4 +45,4 @@ aws cloudfront create-invalidation --distribution-id <your-distribution-id> --pa
 
 - Local-only baseline: [cafe-inventory-frontend](https://github.com/rrich360/cafe-inventory-frontend) — forked from here, shares this repo's git history
 - Backend (AWS): [cafe-inventory-backend-aws](https://github.com/rrich360/cafe-inventory-backend-aws)
-- Part of the "From Code to Cloud" article series documenting this project's journey from localhost to AWS — see Article 3 (EC2 + RDS deployment), Article 4 (S3, SES, CloudFront), and Article 5 (AI Order Insights with Amazon Bedrock)
+- Part of the "From Code to Cloud" article series documenting this project's journey from localhost to AWS — see Article 3 (EC2 + RDS deployment), Article 4 (S3, SES, CloudFront), and [Article 5: AI Comes to the Cafe](https://medium.com/@roger.richards07/ai-comes-to-the-cafe-adding-amazon-bedrock-to-the-cafe-inventory-system-a9274bb17fa2) (AI Order Insights with Amazon Bedrock)
