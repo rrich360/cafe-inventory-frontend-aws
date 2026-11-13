@@ -27,9 +27,16 @@
 
             <div class="owner">
                 <div class="avatar">
-                    <img src="../../assets/img/Roger-wht_backgrnd-collar-suit2.JPG"
+                    <!-- The owner's photo shows only on the admin account; everyone who signs up gets a generic icon -->
+                    <img *ngIf="role === 'admin'; else genericAvatar"
+                         src="../../assets/img/Roger-wht_backgrnd-collar-suit2.JPG"
                          alt="Profile Avatar"
                          class="img-circle img-no-padding img-responsive">
+                    <ng-template #genericAvatar>
+                        <div class="generic-avatar" aria-label="Profile Avatar">
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </ng-template>
                 </div>
                 <div class="name">
                     <h4 class="title">Welcome Back!<br /></h4>
@@ -47,8 +54,8 @@
                         Cafe Inventory Service. Free your team from repetitive and
                         error-prone manual processes. After you create a Stock Order
                         (S.O.), you can send it to your vendor individually or in bulk.
-                        We are adding an AI Agent for further automation in manual tasks
-                        — new release coming soon.
+                        AI Order Insights, powered by Claude on Amazon Bedrock, turns your
+                        order history into a plain-language summary with one recommended action.
                     </p>
                     <br />
                     <button class="btn btn-round dashboard-btn" (click)="goToDashboard()">
